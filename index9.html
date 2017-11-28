@@ -30,7 +30,7 @@
     var actionArray = actionStr.split(",");
 
     document.getElementById("span1").addEventListener("click", function() {
-        document.getElementById("span1").innerHTML = getName();
+        document.getElementById("span1").innerHTML = getName("이", "가");
     });
 
     document.getElementById("span2").addEventListener("click", function() {
@@ -41,15 +41,23 @@
         document.getElementById("span3").innerHTML = getAction();
     });
 
-    function getName() {
+    function getName(str1, str2) {
         var name = namesArray[getRandomNumber(namesArray.length)];        
+        if (str2 == undefined) {
+            if (str1 == undefined) {
+                return name;
+            } else {
+                return name + str1;
+            }
+        }
+
         var charcode = name.charCodeAt(name.length-1);
         var b = (charcode - 0xAC00) % 28;
 
         if (b != 0) {
-            name += "이";
+            name += str1;
         } else {
-            name += "가";
+            name += str2;
         }
         return name;
         //return namesArray[getRandomNumber(namesArray.length)];        
