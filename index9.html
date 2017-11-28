@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    p {
+        font-size: 50px;
+        font-weight: 900;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <p> <span id="span1">누</span>가
+        <span id="span2">누구</span>에게
+        <span id="span3">무엇을</span>.</p>
+
+
+
+
+
+
+    <script>
+    var namesStr = "강선호,강종원,김근호,김근홍,나승현,배연지,송피터,안원휘,유상문,윤종석,윤해원,이령빈,이소연,이수용,이정준,이혜림";
+    var namesArray = namesStr.split(",");
+    var actionStr = "밥사주기,커피사주기,데려다주기,모셔오기";
+    var actionArray = actionStr.split(",");
+
+    document.getElementById("span1").addEventListener("click", function() {
+        document.getElementById("span1").innerHTML = getName();
+    });
+
+    document.getElementById("span2").addEventListener("click", function() {
+        document.getElementById("span2").innerHTML = getName();
+    });
+
+    document.getElementById("span3").addEventListener("click", function() {
+        document.getElementById("span3").innerHTML = getAction();
+    });
+
+    function getName() {
+        return namesArray[getRandomNumber(namesArray.length)];        
+    }
+    function getRandomNumber(len) {
+        return Math.floor(Math.random() * len);
+    }
+
+    function getAction() {
+        return actionArray[getRandomNumber(actionArray.length)];
+    }
+    
+    
+    </script>
+</body>
+</html>
