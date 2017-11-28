@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <p> <span id="span1">누</span>가
+    <p> <span id="span1">누가</span>
         <span id="span2">누구</span>에게
         <span id="span3">무엇을</span>.</p>
 
@@ -42,7 +42,17 @@
     });
 
     function getName() {
-        return namesArray[getRandomNumber(namesArray.length)];        
+        var name = namesArray[getRandomNumber(namesArray.length)];        
+        var charcode = name.charCodeAt(name.length-1);
+        var b = (charcode - 0xAC00) % 28;
+
+        if (b != 0) {
+            name += "이";
+        } else {
+            name += "가";
+        }
+        return name;
+        //return namesArray[getRandomNumber(namesArray.length)];        
     }
     function getRandomNumber(len) {
         return Math.floor(Math.random() * len);
