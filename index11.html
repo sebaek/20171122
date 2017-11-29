@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+    color: white;
+}        
+#result {
+    text-align: center;
+}
+#result>div {
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    font-size: 40px;
+    font-weight: 900;
+    display: inline-block;
+    background: black;
+    border-radius: 100%;
+    height: 100px;
+    width: 100px;
+    margin: 15px;
+    background: radial-gradient(circle at 33px 33px, #5cabff, #000);
+  }
+    
+    </style>
+</head>
+<body>
+<button class="button" id="button1">로또추첨</button>
+<div id="result"></div>
+
+<script>
+    var numbers = [];
+    var len = 44;
+    numbers[len] = 45;
+    while (len--) {
+        numbers[len] = len + 1;
+    }
+
+    document.getElementById("button1").onclick =
+        showLottoNumbers;
+
+    function showLottoNumbers() {
+        numbers.sort(function(a, b) {
+            return 0.5 - Math.random();});
+        var lotto = numbers.slice(0, 6);
+        console.log(lotto);
+        var lottoElements = 
+            "<div>"
+            + lotto.join("</div><div>")
+            + "</div>";
+        
+        document.getElementById("result").innerHTML = 
+            lottoElements;
+    }
+
+
+    
+</script>    
+</body>
+</html>
