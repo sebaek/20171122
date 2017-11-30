@@ -14,9 +14,10 @@
 
 
     <script>
+        var results = document.getElementById('results');
+        var r = new XMLHttpRequest();
         function showList() {
-            var results = document.getElementById('results');
-            var r = new XMLHttpRequest();
+
             r.open("GET", "http://www.filltext.com?rows=2&f={firstName}", true);
             r.onreadystatechange = function () {
                 if (r.readyState != 4 || r.status != 200) return;
