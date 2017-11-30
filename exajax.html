@@ -4,12 +4,20 @@
 
 <head>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="jqueryfile.js"></script>
 </head>
 
 <body>
-    <img src="image/블랙핑크.jpg" alt="" style="width: 200px; height: 150px;">
+    <!-- <img src="image/블랙핑크.jpg" alt="" style="width: 200px; height: 150px;"> -->
+    <br>
+    <img src="a" alt="target" id="targetimg">
     <br>
     <button onclick="showList();">ajax 테스트</button>
+    <button onclick="showImage();">ajax 파일 다운로드 테스트</button>
+    <button onclick="showImage2();">ajax 파일 다운로드 테스트2</button>
+    <button onclick="showImage3();">ajax 파일 다운로드 테스트3</button>
     <ul id="results"></ul>
 
 
@@ -28,6 +36,50 @@
             };
             r.send();
 
+        }
+
+        function showImage() {
+
+            r.open("GET", "image/abc.jpg", true);
+            r.responseType = "arraybuffer";
+            r.onreadystatechange = function () {
+                if (r.readyState != 4) return;
+                var arraybuffer = r.response;
+                var byteArray = new Uint8Array(arraybuffer);
+
+                var blob = new Blob(byteArray, { type: "image/jpeg" });
+                var file = new File([blob], "a.jpg", { type: "image/jpeg", lastModified: Date.now() });
+                console.log(file.size);
+                // document.getElementById('targetimg').src = "a.jpg";
+            };
+            r.send();
+
+        }
+
+        function showImage2() {
+
+            $.fileDownload('image/abc.jpg')
+                .done(function () { alert('File download a success!'); })
+                .fail(function () { alert('File download failed!'); });
+
+        }
+
+        function showImage3() {
+            
+            r.open("GET", "image/abc.jpg", true);
+            r.responseType = "blob";
+
+            r.onload = function (oEvent) {
+                var blob = r.response;
+                var file = new File([blob], "a.jpg", { type: "image/jpeg", lastModified: Date.now() });
+                var s = URL.createObjectURL(file);
+                // console.log(s);
+                document.getElementById("targetimg").src = s;
+                // var url = URL.createObjectURL(blob);
+                // console.log(file.size);
+            };
+
+            r.send();
         }
 
 
