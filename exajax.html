@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <img src="image/블랙핑크.jpg" alt="" style="width: 200px; height: 150px;">
+    <br>
+    <button onclick="showList();">ajax 테스트</button>
+    <ul id="results"></ul>
+
+
+    <script>
+        function showList() {
+            var results = document.getElementById('results');
+            var r = new XMLHttpRequest();
+            r.open("GET", "http://www.filltext.com?rows=2&f={firstName}", true);
+            r.onreadystatechange = function () {
+                if (r.readyState != 4 || r.status != 200) return;
+                var data = JSON.parse(r.responseText);
+                for (i = 0; i < data.length; i++) {
+                    results.innerHTML += '<li>' + data[i].f + '</li>'
+                }
+            };
+            r.send();
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
