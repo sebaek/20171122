@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<!--     
+. text type의 input 요소 2개와 
+버튼 하나, 콘텐트가 없는 p요소 하나를 만들고
+버튼을 누르면 input요소에 입력된
+텍스트가 연결되어 p요소에 출력되도록 하세요.
+-->
+
+<input type="text" name="" id="input1"><br>
+<input type="text" name="" id="input2"><br>
+<button onclick="solution1();" id="btn1">연결~!</button>
+<p id="result1"></p>
+
+<!-- 
+. text type의 input 요소 2개와 
+버튼 하나, 콘텐트가 없는 p요소 하나를 만들고
+버튼을 누르면 첫번째 input요소에 입력된 텍스트가
+두번째 인풋요소의 값의
+어느 인덱스(첫번째 매치되는)에 있는지
+p요소에 출력하세요. 
+만약 매치되는 인덱스가 없으면 -1을 출력하세요.
+-->
+
+<input type="text" name="" id="input3">
+<br>
+<input type="text" name="" id="input4">
+<br>
+<button onclick="solution2()" id="btn2">몇 번 인덱스?</button>
+<p id="result2"></p>
+
+
+<!-- 
+. text type의 input 요소 2개와 
+버튼 하나, 콘텐트가 없는 p요소 하나를 만들고
+버튼을 누르면 input요소들에 입력된
+수들를 더한 값을 p요소에 출력되도록 하세요.
+(심화:빼기, 나누기, 곱하기,
+      나머지 연산버튼도 만들어보세요)
+  -->
+<input type="text" name="" id="input5">
+<br>
+<input type="text" name="" id="input6">
+<br>
+<button onclick="solution3('+')" >+</button>
+<button onclick="solution3('-')" >-</button>
+<button onclick="solution3('*')" >*</button>
+<button onclick="solution3('/')" >/</button>
+<button onclick="solution3('%')" >%</button>
+<p id="result3"></p>
+
+<!-- 
+. number type의 input 요소 2개와 
+버튼 하나, 콘텐트가 없는 p요소 하나를 만들고
+버튼을 누르면 input요소들에 입력된 수사이의
+랜덤한 값을 p요소에 출력되도록 하세요.
+(모두 정수)
+ -->
+<input type="number" id="input7"><br>
+<input type="number" id="input8"><br>
+<button onclick="solution4()">랜덤값</button>
+<p id="result4"></p>
+
+<!-- 
+. text type의 input 요소 1개와 
+버튼 하나, 콘텐트가 없는 p요소 하나를 만들고
+버튼을 누르면 input요소에 입력된
+텍스트를 p요소에 거꾸로 출력되도록 하세요.
+  -->
+<input type="text" name="" id="input9"><br>
+<button onclick="solution5()">거꾸로</button>
+<p id="result5"></p>
+
+<script>
+function solution5() {
+    var val = document.getElementById("input9").value;
+    var result = val.split("").reverse().join("");
+
+    document.getElementById("result5").innerHTML = result;
+}
+
+
+
+function solution4() {
+    var val1 = document.getElementById("input7").value;
+    var val2 = document.getElementById("input8").value;
+    val1 = Number(val1);
+    val2 = Number(val2);
+    var result;
+
+    var max = val2 > val1 ? val2 : val1;
+    var min = val2 < val1 ? val2 : val1;
+
+    result = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    document.getElementById("result4").innerHTML = result;
+}
+
+
+
+
+
+function solution3(op) {
+    var val1 = Number(document.getElementById("input5").value);
+    var val2 = Number(document.getElementById("input6").value);
+    var result = 0;
+    switch (op) {
+        case "+":
+            result = val1 + val2;
+            break;
+        case "-":
+            result = val1 - val2;
+            break;
+        case "*":
+            result = val1 * val2;
+            break;
+        case "/":
+            result = val1 / val2;
+            break;
+        case "%":
+            result = val1 % val2;
+            break;
+        default:
+    }
+    document.getElementById("result3").innerHTML = result;
+}
+
+function solution2() {
+    var val1 = document.getElementById("input3").value;    
+    var val2 = document.getElementById("input4").value;
+    document.getElementById("result2").innerHTML = val2.indexOf(val1);
+}
+
+function solution1() {
+    var val1 = document.getElementById("input1").value;
+    var val2 = document.getElementById("input2").value;
+    document.getElementById("result1").innerHTML = val1 + val2;
+}
+
+</script>
+
+</body>
+</html>
