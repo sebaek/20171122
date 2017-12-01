@@ -13,20 +13,80 @@
 
 </head>
 <body>
-    <input type="text" name="" id="input1">
-    <input type="text" name="" id="input2">
+    <input type="text" name="" id="input1"><br>
+    <input type="text" name="" id="input2"><br>
 
     <button onclick="showBig();">큰값출력!</button>
     <button onclick="showSmall();">작은값출력!</button>
 
     <p id="result"></p>
     
+
+    <input type="text" name="" id="input3"><br>
+    <button onclick="showSorted()">정렬결과출력</button>
+    <p id="result2"></p>
+
+
+    <input type="text" name="" id="input4"><br>
+    <button onclick="showMultiple()">곱했을때 음수? 양수? 0?</button>
+    <p id="result3"></p>
+
     <script>
+function showMultiple() {
+    // 1. input4 value를 가져온다.
+    var value = document.getElementById("input4").value;
+    // 2. ,을 기준으로 배열로 만들고.
+    var numbers = value.split(",");
+    // 3. 0이 있는지? 음수가 몇개인지?
+    var resultTxt = "";
+    var negative = 0;
+    for (var i = 0; i < numbers.length; i++) {
+        var number = Number(numbers[i]);
+        if (number == 0) {
+            resultTxt = "0 입니다.";
+            break;
+        } else if (number < 0) {
+            negative++;
+        }
+    }
+    if (!resultTxt) {
+        resultTxt = (negative % 2 == 0) ? '양수입니다.' : '음수입니다.';
+    }
+
+    // 4. 결과 출력
+    document.getElementById("result3").innerHTML = resultTxt;
+}
+
+
+function showSorted() {
+    //1. input3 value를 가져와서.
+    var value = document.getElementById("input3").value;
+    //2. ,을 기준으로 배열로 만든다.
+    var numbers = value.split(",");
+    //3. sort한다.
+    numbers.sort(function(a, b) {return a-b;});
+    //4. 출력한다.
+    document.getElementById("result2").innerHTML = numbers;
+}
+
+
 function showBig() {
     var number1 = Number(document.getElementById("input1").value);
     var number2 = Number(document.getElementById("input2").value);
     var result;
     if (number1 > number2) {
+        result = number1;
+    } else {
+        result = number2;
+    }
+    document.getElementById("result").innerHTML = result;
+}
+
+function showSmall() {
+    var number1 = Number(document.getElementById("input1").value);
+    var number2 = Number(document.getElementById("input2").value);
+    var result;
+    if (number1 < number2) {
         result = number1;
     } else {
         result = number2;
