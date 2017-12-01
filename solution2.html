@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <input type="text" name="" id="input1">
+    <input type="text" name="" id="input2">
+
+    <button onclick="showBig();">큰값출력!</button>
+    <button onclick="showSmall();">작은값출력!</button>
+
+    <p id="result"></p>
+    
+    <script>
+function showBig() {
+    var number1 = Number(document.getElementById("input1").value);
+    var number2 = Number(document.getElementById("input2").value);
+    var result;
+    if (number1 > number2) {
+        result = number1;
+    } else {
+        result = number2;
+    }
+    document.getElementById("result").innerHTML = result;
+}
+    </script>
+</body>
+</html>
