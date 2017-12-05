@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#button1").click(function () {
+                var number1 = Number($("#input1").val());
+                var number2 = Number($("#input2").val());
+                var gcd = gcdTwoNumbers(number1, number2);
+                $("#result").text(gcd);
+            });
+        });
+
+        function gcdTwoNumbers(x, y) {
+            if ((typeof x !== 'number') || (typeof y !== 'number'))
+                return false;
+            x = Math.abs(x);
+            y = Math.abs(y);
+            while (y) {
+                var t = y;
+                y = x % y;
+                x = t;
+            }
+            return x;
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="number" name="" id="input1">
+    <br>
+    <input type="number" name="" id="input2">
+    <br>
+    <button id="button1">보여줘</button>
+    <p id="result"></p>
+</body>
+
+</html>

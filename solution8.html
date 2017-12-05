@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    var randomNumber = getRandomNumber();
+    $(document).ready(function() {
+        $("#button1").click(function() {
+            randomNumber = getRandomNumber();
+            $("#message").html("");
+            $("#input1").focus();
+        });
+        $("#button2").click(function() {
+            var inputNumber = Number($("#input1").val());
+            if (inputNumber == randomNumber) {
+                $("#message").html("축하합니다. 정답입니다.");
+            } else if (inputNumber < randomNumber) {
+                $("#message").html("입력하신 수가 작습니다.");
+            } else {
+                $("#message").html("입력하신 수가 큽니다.");
+            }
+            $("#input1").focus();
+        });
+    })
+
+    function getRandomNumber() {
+        return Math.floor(Math.random() * 100) + 1;
+    }
+    
+    
+    </script>
+</head>
+<body>
+    <button id="button1">새게임</button>
+    <input type="number" name="" id="input1">
+    <button id="button2">확인</button>
+    <p id="message"></p>
+</body>
+</html>

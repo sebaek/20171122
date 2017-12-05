@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function() {
+    var resultText = "";
+
+    for (var i = 2; i <= 9; i++) {
+        resultText += "<div>"
+        for (var j = 1; j <= 9; j++) {
+            resultText += i + " X " + j +
+                          " = " + (i*j) + "<br>";
+
+        }
+        resultText += "</div>"
+    }
+
+    $("#result").html(resultText);
+});
+    </script>    
+    <style>
+    #result div {
+        text-align: center;
+        display: inline-block;
+        width: 150px;
+        border: 2px solid black;
+        margin: 30px;
+        padding: 10px;
+
+    }
+    
+    </style>
+</head>
+<body>
+<div id="result"></div>
+
+
+    
+</body>
+</html>
